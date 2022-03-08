@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="import" href="./index.php">
     <title>Document</title>
 </head>
 
@@ -19,17 +20,29 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col text-center mt-5">
-                    <?php      
-                        $nameProduct = isset($_POST['product']) ? $_POST['product'] : "";
-                            echo "produto: $nameProduct<br />";
-                            
-                        $priceProduct = isset($_POST['productPrice']) ? $_POST['productPrice'] : "";
-                            echo "Preço do produto er: $priceProduct Reais";
-                     ?>
+                    <?php
+                    //$nameProduct = isset($_POST['product']) ? $_POST['product'] : "";
+                    //echo "produto: $nameProduct<br />";
+
+                    //$priceProduct = isset($_POST['productPrice']) ? $_POST['productPrice'] : "";
+                    //echo "Preço do produto er: $priceProduct Reais";
+
+                    //$array = isset($_GET['array'][0]) ? $_GET['array'][0] :$_GET['array'][1];
+                    //echo "produtos do array $array";
+                    //echo $array."<br>";
+                    $list = json_decode($_POST['array'], true);
+
+                   // $array2 = isset($_GET['array[]']) ? $_GET['array[]'] : "nao chegou";
+                   // echo $array2;
+
+                    foreach ($list as $values) {
+                        echo $values;
+                    }
+                    ?>
                 </div>
             </div>
         </div>
     </section>
-
 </body>
+
 </html>

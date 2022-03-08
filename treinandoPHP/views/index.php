@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="./../styles/index.sass">
     <title>Document</title>
@@ -19,26 +20,26 @@
     <section>
         <div class="container-fluid">
             <div class="card pl-2 pr-2 pb-3 pt-3 border">
-            <form name="formulario" method="POST" action="listProducts.php">
-                <div class="form-group">
-                    <label>Informe um produto novo</label>
-                    <input type="text" name="product" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Preço do Produto</label>
-                    <input type="number" class="form-control" name="productPrice">
-                </div>
-                <button type="submit" class="btn btn-primary rounded-pill"
-                >Ver produtos na proxima pagina
-            </button> 
-            </form>
+                <form name="formulario" method="POST" action="listProducts.php">
+                    <?php
+                        session_start();
+                        $product = array("arroz", "feijao", "carne");
+                        $json = json_encode($product); 
+                    ?>
+                    <div class="form-group">
+                        <label>Informe um produto novo</label>
+                        <input type="text" name="product" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Preço do Produto</label>
+                        <input type="number" name="productPrice" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary rounded-pill">Ver produtos na proxima pagina</button>
+                    <input type="hidden" name="array" >">
+                </form>
             </div>
         </div>
     </section>
-
 </body>
 
-<style>
-
-</style>
 </html>
