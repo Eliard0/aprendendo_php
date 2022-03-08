@@ -19,22 +19,17 @@
                 <div class="col text-center mt-5">
                     <?php
                     session_start();
-                    //$nameProduct = isset($_POST['product']) ? $_POST['product'] : "";
-                    //echo "produto: $nameProduct<br />";
+                    $nameProduct = isset($_POST['product']) ? $_POST['product'] : "";
+                    echo "produto: $nameProduct<br />";
 
-                    //$priceProduct = isset($_POST['productPrice']) ? $_POST['productPrice'] : "";
-                    //echo "Preço do produto er: $priceProduct Reais";
+                    $priceProduct = isset($_POST['productPrice']) ? $_POST['productPrice'] : "";
+                    echo "Preço do produto er: $priceProduct Reais <br>";
 
-                    //$array = isset($_GET['array'][0]) ? $_GET['array'][0] :$_GET['array'][1];
-                    //echo "produtos do array $array";
-                    //echo $array."<br>";
-                    $list = $_POST['array'];
                     $prod = $_SESSION["product"];
-                    // $array2 = isset($_GET['array[]']) ? $_GET['array[]'] : "nao chegou";
-                    // echo $array2;
+                   
 
                     foreach ($prod as $values) {
-                        echo "$values<br>";
+                        echo "dados do array: $values<br>";
                     }
                     ?>
                 </div>

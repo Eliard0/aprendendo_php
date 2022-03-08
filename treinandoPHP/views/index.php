@@ -21,15 +21,14 @@
                     <?php
                     session_start();
                     $_SESSION["product"] = array("arroz", "feijao", "carne");
-                    $json = json_encode($product);
                     ?>
                     <div class="form-group">
                         <label>Informe um produto novo</label>
-                        <input type="text" name="array[]" class="form-control">
+                        <input type="text" name="product" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Preço do Produto</label>
-                       <input type="number" name="array[]" class="form-control">
+                        <input type="number" name="productPrice" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary rounded-pill">Ver produtos na proxima pagina</button>
                     <input type="hidden" name="array[]" >
