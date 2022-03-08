@@ -34,7 +34,7 @@
                     // echo $array2;
 
                     foreach ($prod as $values) {
-                        echo $values;
+                        echo "$values<br>";
                     }
                     ?>
                 </div>
