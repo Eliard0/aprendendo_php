@@ -20,7 +20,7 @@
                 <form name="formulario" method="POST" action="listProducts.php">
                     <?php
                     session_start();
-                    $_SESSION["product"] = array("arroz", "feijao", "carne");
+                    $_SESSION["product"] = array("arroz", "feijao", "carne","macarrão", "tomate", "peixe");
                     ?>
                     <div class="form-group">
                         <label>Informe um produto novo</label>
