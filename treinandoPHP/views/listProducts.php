@@ -20,17 +20,48 @@
                     <div class="card border-card" style="width: 18rem;">
                         <div class="card-body">
                             <?php
+                            include_once('banco.php');
+
                             session_start();
                             $nameProduct = isset($_POST['product']) ? $_POST['product'] : "";
                             echo "produto: $nameProduct<br />";
-                            
-                            $priceProduct = isset($_POST['productPrice']) ? $_POST['productPrice'] : "";
-                            echo "Preço do produto: $priceProduct Reais <br>";
-                            
-                            $prod = $_SESSION["product"];
 
-                            foreach ($prod as $values) {
-                                echo "dados do array: $values<br>";
+                            $priceProduct = isset($_POST['productPrice']) ? $_POST['productPrice'] : "";
+                            //echo "Preço do produto: $priceProduct Reais <br>";
+
+                            //$prod = $_SESSION["product"];
+
+                            //foreach ($prod as $values) {
+                            //  echo "dados do array: $values<br>";
+                            //}
+
+                            $con = new banco();
+
+                            $sql = " INSERT INTO products (product, price) VALUES ('$nameProduct', '$priceProduct')";
+                            
+                            if (mysqli_query($con->getDB(), $sql)) {
+                                echo "dados inseridos no banco:";
+                            } else {
+                                echo "Error: " . $sql . "<br>" . mysqli_error($con->getDB());
+                            }
+
+                            $query = " SELECT id, product, price FROM products ";
+
+                            $buscaDado = mysqli_query($con->getDB(), $query)  or die("nao foi possivel buscar os dados");
+
+                            $linha = mysqli_fetch_assoc($buscaDado);
+
+                            $total = mysqli_num_rows($buscaDado);
+
+                            mysqli_close($con->getDB());
+                            ?>
+                            <?php
+                            if ($total > 0) {
+                                do {
+                            ?>
+                                    <p class="text-left"><?= $linha['id'] ?>: <?= $linha['product'] ?> preço: <?= $linha['price'] ?></p>
+                            <?php
+                                } while ($linha = mysqli_fetch_assoc($buscaDado));
                             }
                             ?>
                         </div>
@@ -45,4 +76,5 @@
 
     </section>
 </body>
+
 </html>
